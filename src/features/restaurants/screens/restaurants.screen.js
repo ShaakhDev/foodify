@@ -25,7 +25,6 @@ export const RestaurantsScreen = () => {
         <SearchContainer>
           <Searchbar placeholder="search" />
         </SearchContainer>
-
         <RestaurantListContainer>
           <RestaurantInfoCard />
         </RestaurantListContainer>
