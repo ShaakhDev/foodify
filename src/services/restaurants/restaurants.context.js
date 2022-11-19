@@ -3,7 +3,7 @@ import {
   restaurantsRequest,
   restaurantsTransform,
 } from "./restaurants.service";
-import { LocationContext } from "../restaurants/location/location.context";
+import { LocationContext } from "../location/location.context";
 export const RestaurantsContext = createContext();
 
 export const RestaurantsContextProvider = ({ children }) => {

@@ -14,11 +14,11 @@ export const RestaurantsNavigator = () => {
     <RestaurantsStack.Navigator
       screenOptions={{
         ...TransitionPresets.BottomSheetAndroid,
+        headerShown: false,
       }}
-      headerMode="none"
     >
       <RestaurantsStack.Screen
-        name="Restaurants"
+        name="RestaurantsAll"
         component={RestaurantsScreen}
       />
       <RestaurantsStack.Screen

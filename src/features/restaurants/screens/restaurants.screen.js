@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import { FlatList, View, TouchableOpacity } from "react-native";
 import { Search } from "../components/search.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { ActivityIndicator, Colors } from "react-native-paper";
-import { SafeArea } from "../../../components/utility/safe-area.component";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
+
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -25,6 +27,7 @@ const LoadingContainer = styled(View)`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants = [] } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
 
   return (
     <>
