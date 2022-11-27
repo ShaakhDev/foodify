@@ -4,13 +4,26 @@ import {
   AuthButton,
   AccountCover,
   AccountContainer,
+  Title,
+  AnimationWrapper,
 } from "../components/account.styles";
+import LottieView from "lottie-react-native";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <AnimationWrapper>
+        <LottieView
+          key="animation"
+          autoPlay
+          loop
+          resizeMode="cover"
+          source={require("../../../../assets/watermelon.json")}
+        />
+      </AnimationWrapper>
+      <Title>Foodify</Title>
       <AccountContainer>
         <AuthButton
           onPress={() => navigation.navigate("Login")}
@@ -22,7 +35,7 @@ export const AccountScreen = ({ navigation }) => {
         <Spacer position="top" size="large">
           <AuthButton
             onPress={() => navigation.navigate("Register")}
-            icon="lock-open-outline"
+            icon="email"
             mode="contained"
           >
             Register

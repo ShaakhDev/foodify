@@ -1,20 +1,16 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
-import { FlatList, View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { Search } from "../components/search.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import { RestaurantList } from "../components/restaurants-list.style";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -57,16 +53,14 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.name}
-        >
-          {/* <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
-            <RestaurantInfoCard />
-          </Pressable> */}
-        </RestaurantList>
+        />
       </SafeArea>
     </>
   );
