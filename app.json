@@ -24,6 +24,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.shakhzodbobolov.Foodify"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4a560698-094a-40cc-8e9d-08fc6313b51d"
       }
     }
   }
