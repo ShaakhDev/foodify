@@ -12,7 +12,7 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 export const MapScreen = ({ navigation }) => {
-  const { keyword, location } = useContext(LocationContext);
+  const { keyword, location = {} } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantsContext);
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;

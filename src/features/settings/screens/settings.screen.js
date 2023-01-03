@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useCallback, useState } from "react";
 import styled from "styled-components/native";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -7,6 +7,7 @@ import { List, Avatar } from "react-native-paper";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 
 const AvatarContainer = styled.View`
   align-items: center;
@@ -19,13 +20,16 @@ const SettingsItem = styled(List.Item)`
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   const [photo, setPhoto] = useState(null);
+
   const getProfilePicture = async (currentUser) => {
     const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
     setPhoto(photoUri);
   };
-  useEffect(() => {
-    getProfilePicture(user);
-  }, [user]);
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [user])
+  );
 
   return (
     <SafeArea>

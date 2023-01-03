@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import {
   getAuth,
   onAuthStateChanged,
@@ -18,8 +18,10 @@ export const AuthenticationContextProvider = ({ children }) => {
   onAuthStateChanged(auth, (u) => {
     if (u) {
       setUser(u);
+      setError(null);
       setIsLoading(false);
     } else {
+      setUser(null);
       setIsLoading(false);
     }
   });
@@ -44,15 +46,14 @@ export const AuthenticationContextProvider = ({ children }) => {
       setError("Passwords do not match");
       return;
     }
-
-    createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {
         setUser(response.user);
         setIsLoading(false);
         setError(null);
       })
       .catch((err) => {
-        setError(err.message.toString());
+        setError(err.message);
         setIsLoading(false);
       });
   };

@@ -4,7 +4,6 @@ import { Camera } from "expo-camera";
 import { View, Text, TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import { useFocusEffect } from "@react-navigation/native";
 
 const ProfileCamera = styled(Camera)`
   width: 100%;
@@ -15,12 +14,12 @@ const InnerSnap = styled.View`
   height: 100%;
   z-index: 999;
 `;
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
   const [hasPermission, setHasPermission] = useState(null);
   const cameraRef = useRef();
 
-  useFocusEffect(() => {
+  useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === "granted");
@@ -32,6 +31,7 @@ export const CameraScreen = () => {
       let photo = await cameraRef.current.takePictureAsync();
       console.log(photo);
       AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
+      navigation.goBack();
     }
   };
   if (hasPermission === null) {
