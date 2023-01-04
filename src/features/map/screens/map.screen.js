@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
-import { Text } from "react-native";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import styled from "styled-components/native";
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
@@ -11,9 +11,9 @@ const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
-export const MapScreen = ({ navigation }) => {
-  const { keyword, location = {} } = useContext(LocationContext);
-  const { restaurants = [] } = useContext(RestaurantsContext);
+export const RestaurantMap = ({ navigation }) => {
+  const { location } = useContext(LocationContext);
+  const { restaurants } = useContext(RestaurantsContext);
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;
   useEffect(() => {
@@ -55,4 +55,23 @@ export const MapScreen = ({ navigation }) => {
       </Map>
     </>
   );
+};
+
+export const MapScreen = ({ navigation }) => {
+  const { location } = useContext(LocationContext);
+  if (!location) {
+    return (
+      <>
+        <Search />
+        <Map
+          region={{
+            latitude: 0,
+            longitude: 0,
+          }}
+        />
+      </>
+    );
+  }
+
+  return <RestaurantMap navigation={navigation} />;
 };

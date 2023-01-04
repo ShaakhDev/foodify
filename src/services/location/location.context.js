@@ -23,15 +23,15 @@ export const LocationContextProvider = ({ children }) => {
     locationRequest(keyword)
       .then(locationTransform)
       .then((result) => {
+        setError(null);
         setIsLoading(false);
         setLocation(result);
-        console.log(result);
       })
       .catch((err) => {
+        setLocation(null);
         setIsLoading(false);
         setError(err);
       });
-    console.log("function executed");
   }, [keyword]);
 
   return (

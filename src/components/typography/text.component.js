@@ -38,6 +38,20 @@ const title = (theme) => `
     margin-left: ${theme.space[2]};
     margin-bottom: ${theme.space[2]};
 `;
+const emptyStateHeading = (theme) => `
+    font-size: ${theme.fontSizes.h3};
+    font-weight: ${theme.fontWeights.bold};
+    color: ${theme.colors.text.accent};
+    text-align: center;
+    font-family: ${theme.fonts.heading};
+`;
+const emptyState = (theme) => `
+    font-size: ${theme.fontSizes.title};
+    padding: ${theme.space[4]};
+    color: ${theme.colors.text.accent};
+    text-align: center;
+    font-family: ${theme.fonts.heading};
+    `;
 const variants = {
   body,
   hint,
@@ -45,6 +59,8 @@ const variants = {
   caption,
   error,
   title,
+  emptyState,
+  emptyStateHeading,
 };
 
 export const Text = styled.Text`

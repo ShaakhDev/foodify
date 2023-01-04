@@ -2,7 +2,7 @@ import camelize from "camelize";
 
 export const locationRequest = (searchTerm) => {
   return fetch(
-    `https://foodify-backend-3wumo.ondigitalocean.app/api/geocode?city=${searchTerm}`
+    `https://foodify-backend-3wumo.ondigitalocean.app/api/geocode?city=${searchTerm}&mock=true`
   )
     .then((res) => res.json())
     .catch((err) => console.log(err));
