@@ -38,7 +38,7 @@ export const SettingsScreen = ({ navigation }) => {
           {photo ? (
             <Avatar.Image size={180} source={{ uri: photo }} />
           ) : (
-            <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+            <Avatar.Icon size={180} icon="human" backgroundColor="#125688" />
           )}
         </TouchableOpacity>
         <Spacer size="large">
@@ -49,7 +49,9 @@ export const SettingsScreen = ({ navigation }) => {
         <SettingsItem
           title="Favourites"
           description="View your favourites"
-          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+          left={(props) => (
+            <List.Icon {...props} color="#fb3958" icon="heart" />
+          )}
           onPress={() => navigation.navigate("Favourites")}
         />
         <SettingsItem

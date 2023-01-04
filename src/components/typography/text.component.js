@@ -32,12 +32,19 @@ const label = (theme) => `
     font-family: ${theme.fonts.heading};
 `;
 
+const title = (theme) => `
+    font-size: ${theme.fontSizes.title};
+    color: ${theme.colors.text.inverse};
+    margin-left: ${theme.space[2]};
+    margin-bottom: ${theme.space[2]};
+`;
 const variants = {
   body,
   hint,
   label,
   caption,
   error,
+  title,
 };
 
 export const Text = styled.Text`

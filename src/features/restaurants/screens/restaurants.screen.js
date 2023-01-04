@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
-import { View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { Search } from "../components/search.component";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import RestaurantInfoCard from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { FadeInView } from "../../../components/animations/fade.animation";
-import { Spacer } from "../../../components/spacer/spacer.component";
+
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
@@ -46,22 +45,13 @@ export const RestaurantsScreen = ({ navigation }) => {
         )}
         <RestaurantList
           data={restaurants}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("RestaurantDetail", { restaurant: item })
-              }
-            >
-              <Spacer position="bottom" size="large">
-                <FadeInView>
-                  <RestaurantInfoCard restaurant={item} />
-                </FadeInView>
-              </Spacer>
-            </TouchableOpacity>
-          )}
+          initialNumToRender={7}
+          renderItem={_renderItem}
           keyExtractor={(item) => item.name}
         />
       </SafeArea>
     </>
   );
 };
+
+const _renderItem = ({ item }) => <RestaurantInfoCard restaurant={item} />;

@@ -1,8 +1,9 @@
 import camelize from "camelize";
-import { host } from "../../utils/env";
 
 export const restaurantsRequest = (location) => {
-  return fetch(`${host}/placesNearby?location=${location}`)
+  return fetch(
+    `https://foodify-backend-3wumo.ondigitalocean.app/api/placesNearby?location=${location}`
+  )
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };

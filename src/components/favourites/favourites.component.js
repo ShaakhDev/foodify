@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 import { FavouritesContext } from "../../services/favourites/favourites.context";
 
-const FavouriteButton = styled(TouchableOpacity)`
+const FavouriteButton = styled(Pressable)`
   position: absolute;
   top: 25px;
   right: 25px;
@@ -28,7 +28,7 @@ export const Favourite = ({ restaurant }) => {
       <AntDesign
         name={isFavourite ? "heart" : "hearto"}
         size={24}
-        color={isFavourite ? "red" : "white"}
+        color={isFavourite ? "#fb3958" : "white"}
       />
     </FavouriteButton>
   );

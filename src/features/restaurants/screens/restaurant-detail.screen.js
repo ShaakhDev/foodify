@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { ScrollView, StyleSheet } from "react-native";
+import RestaurantInfoCard from "../components/restaurant-info-card.component";
 import { List } from "react-native-paper";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -18,13 +18,15 @@ export const RestaurantDetailScreen = ({ route }) => {
       <ScrollView>
         <List.Accordion
           title="Breakfast"
-          titleStyle={{ color: breakfastExpanded ? "tomato" : "black" }}
-          left={(props) => (
-            <List.Icon
-              color={breakfastExpanded ? "tomato" : props.color}
-              icon="bread-slice"
-            />
-          )}
+          titleStyle={styles.titleStyle(breakfastExpanded)}
+          // titleStyle={{ color: breakfastExpanded ? "tomato" : "black" }}
+          left={(props) =>
+            expandIcon({
+              ...props,
+              expanded: breakfastExpanded,
+              icon: "bread-slice",
+            })
+          }
           expanded={breakfastExpanded}
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
         >
@@ -33,13 +35,10 @@ export const RestaurantDetailScreen = ({ route }) => {
         </List.Accordion>
         <List.Accordion
           title="Lunch"
-          titleStyle={{ color: lunchExpanded ? "tomato" : "black" }}
-          left={(props) => (
-            <List.Icon
-              color={lunchExpanded ? "tomato" : props.color}
-              icon="hamburger"
-            />
-          )}
+          titleStyle={styles.titleStyle(lunchExpanded)}
+          left={(props) =>
+            expandIcon({ ...props, expanded: lunchExpanded, icon: "hamburger" })
+          }
           expanded={lunchExpanded}
           onPress={() => setLunchExpanded(!lunchExpanded)}
         >
@@ -49,13 +48,14 @@ export const RestaurantDetailScreen = ({ route }) => {
         </List.Accordion>
         <List.Accordion
           title="Dinner"
-          titleStyle={{ color: dinnerExpanded ? "tomato" : "black" }}
-          left={(props) => (
-            <List.Icon
-              color={dinnerExpanded ? "tomato" : props.color}
-              icon="food-variant"
-            />
-          )}
+          titleStyle={styles.titleStyle(dinnerExpanded)}
+          left={(props) =>
+            expandIcon({
+              ...props,
+              expanded: dinnerExpanded,
+              icon: "food-variant",
+            })
+          }
           expanded={dinnerExpanded}
           onPress={() => setDinnerExpanded(!dinnerExpanded)}
         >
@@ -65,13 +65,10 @@ export const RestaurantDetailScreen = ({ route }) => {
         </List.Accordion>
         <List.Accordion
           title="Drinks"
-          titleStyle={{ color: drinksExpanded ? "tomato" : "black" }}
-          left={(props) => (
-            <List.Icon
-              color={drinksExpanded ? "tomato" : props.color}
-              icon="cup"
-            />
-          )}
+          titleStyle={styles.titleStyle(drinksExpanded)}
+          left={(props) =>
+            expandIcon({ ...props, expanded: drinksExpanded, icon: "cup" })
+          }
           expanded={drinksExpanded}
           onPress={() => setDrinksExpanded(!drinksExpanded)}
         >
@@ -85,3 +82,13 @@ export const RestaurantDetailScreen = ({ route }) => {
     </SafeArea>
   );
 };
+
+const expandIcon = ({ color, expanded, icon }) => (
+  <List.Icon color={expanded ? "tomato" : color} icon={icon} />
+);
+
+const styles = StyleSheet.create({
+  titleStyle: (expanded) => ({
+    color: expanded ? "tomato" : "black",
+  }),
+});

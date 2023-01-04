@@ -1,15 +1,25 @@
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
+import { LinearGradient } from "expo-linear-gradient";
 
 export const RestaurantCard = styled(Card)`
   background-color: white;
 `;
 
 export const RestaurantCardCover = styled(Card.Cover)`
-  padding: 20px;
+  padding: 0px;
   background-color: white;
 `;
 
+export const Gradient = styled(LinearGradient)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 87px;
+  z-index: 9;
+  justify-content: flex-end;
+`;
 export const Info = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
