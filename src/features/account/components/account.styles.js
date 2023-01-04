@@ -25,12 +25,18 @@ export const AccountContainer = styled.View`
   border-radius: 10px;
 `;
 export const AuthButton = styled(Button).attrs({
-  color: colors.brand.primary,
-})`
-  padding: ${(props) => props.theme.space[2]};
+  color: colors.text.accent,
+})``;
+export const ButtonTxt = styled(Text)`
+  color: ${(props) => props.theme.colors.text.accent};
 `;
 
-export const AuthInput = styled(TextInput)`
+export const AuthInput = styled(TextInput).attrs({
+  selectionColor: colors.text.accent,
+  underlineColor: colors.text.accent,
+  activeUnderlineColor: colors.text.accent,
+  inactiveUnderlineColor: colors.text.accent,
+})`
   width: 300px;
 `;
 

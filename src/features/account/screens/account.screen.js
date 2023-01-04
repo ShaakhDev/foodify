@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { AccountBackground } from "../components/account.styles";
 import {
   AuthButton,
@@ -29,6 +29,7 @@ export const AccountScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("Login")}
           icon="lock-open-outline"
           mode="contained"
+          dark
         >
           Login
         </AuthButton>
@@ -37,6 +38,7 @@ export const AccountScreen = ({ navigation }) => {
             onPress={() => navigation.navigate("Register")}
             icon="email"
             mode="contained"
+            dark
           >
             Register
           </AuthButton>

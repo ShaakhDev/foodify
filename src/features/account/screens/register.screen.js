@@ -62,6 +62,7 @@ export const RegisterScreen = ({ navigation }) => {
             <AuthButton
               icon="email"
               mode="contained"
+              dark
               onPress={() => onRegister(email, password, repeatedPassword)}
             >
               Register
@@ -72,7 +73,7 @@ export const RegisterScreen = ({ navigation }) => {
         </Spacer>
       </AccountContainer>
       <Spacer position="top" size="large">
-        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+        <AuthButton dark mode="contained" onPress={() => navigation.goBack()}>
           Back
         </AuthButton>
       </Spacer>

@@ -16,7 +16,7 @@ export const Gradient = styled(LinearGradient)`
   top: 0;
   left: 0;
   right: 0;
-  bottom: 87px;
+  bottom: 91px;
   z-index: 9;
   justify-content: flex-end;
 `;

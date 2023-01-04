@@ -25,6 +25,7 @@ export const LoginScreen = ({ navigation }) => {
         <AuthInput
           label="Email"
           value={email}
+          dark
           textContentType="emailAddress"
           keyboardType="email-address"
           autoCapitalize="none"
@@ -50,6 +51,7 @@ export const LoginScreen = ({ navigation }) => {
             <AuthButton
               icon="lock-open-outline"
               mode="contained"
+              dark
               onPress={() => onLogin(email, password)}
             >
               Login
@@ -60,7 +62,7 @@ export const LoginScreen = ({ navigation }) => {
         </Spacer>
       </AccountContainer>
       <Spacer position="top" size="large">
-        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+        <AuthButton mode="contained" dark onPress={() => navigation.goBack()}>
           Back
         </AuthButton>
       </Spacer>
