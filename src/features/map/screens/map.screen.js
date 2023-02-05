@@ -1,16 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import MapView, { Marker, Callout } from "react-native-maps";
-import { SafeArea } from "../../../components/utility/safe-area.component";
-import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
-const Map = styled(MapView)`
-  height: 100%;
-  width: 100%;
-`;
 export const RestaurantMap = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantsContext);
@@ -24,7 +20,8 @@ export const RestaurantMap = ({ navigation }) => {
   return (
     <>
       <Search />
-      <Map
+      <MapView
+        style={{ ...StyleSheet.absoluteFillObject }}
         region={{
           latitude: lat,
           longitude: lng,
@@ -52,7 +49,7 @@ export const RestaurantMap = ({ navigation }) => {
             </Marker>
           );
         })}
-      </Map>
+      </MapView>
     </>
   );
 };
@@ -63,7 +60,7 @@ export const MapScreen = ({ navigation }) => {
     return (
       <>
         <Search />
-        <Map
+        <MapView
           region={{
             latitude: 0,
             longitude: 0,

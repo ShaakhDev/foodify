@@ -18,14 +18,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shakhzodbobolov.Foodify",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDdjJFLdDVa_jYtasAIjs6-4jZEV8mDelc"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F4EEDF"
       },
-      "package": "com.shakhzodbobolov.Foodify"
+      "package": "com.shakhzodbobolov.Foodify",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDdjJFLdDVa_jYtasAIjs6-4jZEV8mDelc"
+        }
+      }
     },
     "extra": {
       "eas": {
