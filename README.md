@@ -1,2 +1,2 @@
 # foodify
-simple food ordering app on react-native
+simple restaurant finding app on react-native
