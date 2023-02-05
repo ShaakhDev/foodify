@@ -12,7 +12,7 @@ web-build/
 note
 .env
 *.keystore
-
+android/app/*.keystore
 # macOS
 .DS_Store
 */node_modules/**/*
