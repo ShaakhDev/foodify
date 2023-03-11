@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { StyleSheet } from "react-native";
-import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, Callout } from "react-native-maps";
 
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";

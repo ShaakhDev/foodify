@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import RestaurantInfoCard from "../components/restaurant-info-card.component";
 import { List } from "react-native-paper";
+import { Spacer } from "components/spacer/spacer.component";
+import { OrderButton } from "../components/restaurants-list.style";
+import { SafeArea } from "components/utility/safe-area.component";
+import { CartContext } from "services/cart/cart.context";
 
-import { SafeArea } from "../../../components/utility/safe-area.component";
-
-export const RestaurantDetailScreen = ({ route }) => {
+export const RestaurantDetailScreen = ({ navigation, route }) => {
+  const { addToCart } = useContext(CartContext);
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
@@ -79,6 +82,18 @@ export const RestaurantDetailScreen = ({ route }) => {
           <List.Item title="Fanta" />
         </List.Accordion>
       </ScrollView>
+      <Spacer position="bottom" size="large">
+        <OrderButton
+          mode="contained"
+          icon="cash"
+          onPress={() => {
+            addToCart({ item: "some", price: 1299 }, restaurant);
+            navigation.navigate("Checkout");
+          }}
+        >
+          Order Special only 12.99$
+        </OrderButton>
+      </Spacer>
     </SafeArea>
   );
 };

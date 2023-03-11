@@ -2,7 +2,7 @@ import camelize from "camelize";
 
 export const restaurantsRequest = (location) => {
   return fetch(
-    `https://foodify-backend-3wumo.ondigitalocean.app/api/placesNearby?location=${location}&mock=true`
+    `https://foodify-backend.vercel.app/api/placesNearby?location=${location}`
   )
     .then((res) => res.json())
     .catch((err) => console.log(err));

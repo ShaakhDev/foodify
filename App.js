@@ -12,6 +12,9 @@ import firebase from "firebase/compat";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import { Navigation } from "./src/infrastructure/navigation";
 
+import { enableLatestRenderer } from "react-native-maps";
+
+enableLatestRenderer();
 const firebaseConfig = {
   apiKey: "AIzaSyBLhL9Eq3aNeNBiW2Xwt05x0Qklyn7pE3o",
   authDomain: "foodify-87cd0.firebaseapp.com",
